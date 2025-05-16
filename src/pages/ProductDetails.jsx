@@ -1,10 +1,14 @@
 import axios from "axios";
-import { useParams } from "react-router"
+import { useParams, useNavigate } from "react-router"
 import {    useEffect, useState } from "react";
 import { Tooltip, OverlayTrigger, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addedToCart} from "../compenents/store/slices/cart";
 
 export default function ProductDetails(){
     const params = useParams();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [product, setProduct] = useState([]);
     const [quantity, setQuantity] = useState(1);
     console.log(params);
@@ -97,8 +101,8 @@ export default function ProductDetails(){
                         }
                     </div>
                     <br />
-                    <button className={`btn btn-success me-5 ${product.availabilityStatus === 'Out of Stock' ? 'disabled' : ''}`}>Buy Now</button>
-                    <button className={`btn btn-outline-success${product.availabilityStatus === 'Out of Stock' ? 'disabled' : ''}`}>Add to Cart</button>
+                    <button className={`btn btn-success me-5 ${product.availabilityStatus === 'Out of Stock' ? 'disabled' : ''}`} onClick={() => {dispatch(addedToCart({id: product.id, quantity: quantity, title: product.title, price: product.price, image: product.images})); navigate('/cart')}}>Buy Now</button>
+                    <button className={`btn btn-outline-success${product.availabilityStatus === 'Out of Stock' ? 'disabled' : ''}`} onClick= {() => dispatch(addedToCart({id: product.id, quantity: quantity, title: product.title, price: product.price, image: product.images}))}>Add to Cart</button>
                 </div>
             </div>
         </div>

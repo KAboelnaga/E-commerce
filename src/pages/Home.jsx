@@ -28,17 +28,17 @@ export default function Home(){
             </div>
             <div className="d-flex justify-content-center mt-4">
         <button
-          className="btn btn-secondary me-2"
+          className="btn btn-secondary me-2 "
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
         >
           Prev
         </button>
 
-        <span className="align-self-center">Page {page} of {totalPages}</span>
+        <span className="align-self-center ">Page {page} of {totalPages}</span>
 
         <button
-          className="btn btn-secondary ms-2"
+          className="btn btn-secondary ms-2 "
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}
         >

@@ -1,6 +1,5 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {BrowserRouter, Route, Routes} from 'react-router';
 import Header from './compenents/Header';
@@ -11,11 +10,12 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 
+
 function App() {
   return (
     <BrowserRouter>
     <Header/>
-    <div className="container my-5">
+    <div className="container">
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/product-details/:id' element={<ProductDetails/>}/>
@@ -24,6 +24,8 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/*' element={<NotFound/>}/>
       </Routes>
+      <br />
+
     </div>
       
     </BrowserRouter>

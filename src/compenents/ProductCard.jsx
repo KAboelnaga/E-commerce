@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router"
+import { addedToCart } from "./store/slices/cart";
+import { useDispatch } from "react-redux";
 
 export default function ProductCard({product}){
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleNavigateToDetails = () => {
         navigate(`/product-details/${product.id}`)
     }
@@ -32,7 +35,7 @@ export default function ProductCard({product}){
                 </p>
                 <div className=" d-flex justify-content-around">
                     <button className="btn btn-outline-primary rounded-5 me-3" onClick={handleNavigateToDetails}>View details</button>
-                    <button className="btn btn-success rounded-5">Add to Cart</button>
+                    <button className="btn btn-success rounded-5" onClick={() => dispatch(addedToCart({id: product.id,quantity: 1, title: product.title, price: product.price, image: product.images}))}>Add to Cart</button>
                 </div>
             </div>
             </div>
