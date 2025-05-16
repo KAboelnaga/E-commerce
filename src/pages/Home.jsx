@@ -8,10 +8,13 @@ export default function Home(){
     const [totalProducts, setTotalProducts] = useState(0);
     const skip = (page - 1) * 30;
     useEffect(() => {
-        axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
-        .then((response) => {setProducts(response.data.products); setTotalProducts(response.data.total);})
-        .catch((error) =>console.log(error));
-    },[page]);
+    axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
+      .then((response) => {
+        setProducts(response.data.products);
+        setTotalProducts(response.data.total);
+      })
+      .catch((error) => console.log(error));
+  }, [skip]);
     console.log(products[0]);
     const totalPages = Math.ceil(totalProducts / 30);
     return(
