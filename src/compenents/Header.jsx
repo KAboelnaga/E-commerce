@@ -1,6 +1,5 @@
 import { Link } from "react-router"
 import { useSelector } from "react-redux";
-import Dropdown from 'react-bootstrap/Dropdown';
 import { LanguageContext } from "../context/LanguageContext";
 import { useContext } from "react";
 import Container from 'react-bootstrap/Container';
@@ -15,13 +14,12 @@ export default function Header(){
     const cartItems = useSelector((state) => state.cart.items);
     return(
         <>
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="md">
         <Container>
         <Navbar.Brand as={Link} to={'/'}>Products</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <div className="justify-content-end align-items-center">
-            <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+        <Navbar.Collapse className="justify-content-end align-items-center">
+            <Nav >
                 <Nav.Link as={Link} to="/register">Register</Nav.Link>
                 <Nav.Link as={Link} to='/login'>Login</Nav.Link>
                 <span className="nav-item">
@@ -35,12 +33,9 @@ export default function Header(){
                 <NavDropdown title="Lang" onSelect={handleSelect}>
                 <NavDropdown.Item eventKey="en" active={language === "en"}>EN</NavDropdown.Item>
                 <NavDropdown.Item eventKey="ar" active={language === "ar"}>AR</NavDropdown.Item>
-                <NavDropdown.Divider />
                 </NavDropdown>
-                
             </Nav>
-            </Navbar.Collapse>
-        </div>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
       </>

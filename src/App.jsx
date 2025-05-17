@@ -10,11 +10,9 @@ const ProductDetails = lazy(() => import('./pages/ProductDetails'));
 const Register = lazy(() => import('./pages/Register'));
 const Login = lazy(() => import('./pages/Login'));
 const Cart = lazy(() => import('./pages/Cart'));
-import LanguageProvider from './context/LanguageContext';
 
 function App() {
   return (
-    <LanguageProvider>
     <BrowserRouter>
     <Header/>
     <div className="container">
@@ -33,7 +31,6 @@ function App() {
     </div>
       
     </BrowserRouter>
-    </LanguageProvider>
   )
 }
 
