@@ -10,7 +10,9 @@ export default function Home(){
     
     useEffect(() => {
         axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
-        .then((response) => {setProducts(response.data.products); setTotalProducts(response.data.total);})
+        .then((response) => {
+          setProducts(response.data.products); 
+          setTotalProducts(response.data.total);})
         .catch((error) =>console.log(error));
     },[skip]);
     console.log(products[0]);
