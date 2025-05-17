@@ -11,7 +11,7 @@ export default function Home(){
         axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
         .then((response) => {setProducts(response.data.products); setTotalProducts(response.data.total);})
         .catch((error) =>console.log(error));
-    },[page]);
+    },[skip]);
     console.log(products[0]);
     const totalPages = Math.ceil(totalProducts / 30);
     return(
