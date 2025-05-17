@@ -7,6 +7,7 @@ export default function Home(){
     const [page, setPage] = useState(1);
     const [totalProducts, setTotalProducts] = useState(0);
     const skip = (page - 1) * 30;
+    
     useEffect(() => {
         axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
         .then((response) => {setProducts(response.data.products); setTotalProducts(response.data.total);})
