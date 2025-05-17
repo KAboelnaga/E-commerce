@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../compenents/ProductCard"
-import axios from "axios";
+import axiosInstance from "../apis/config";
 
 export default function Home(){
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(1);
     const [totalProducts, setTotalProducts] = useState(0);
     const skip = (page - 1) * 30;
-    
+      console.log("All env:", import.meta.env);
     useEffect(() => {
-        axios.get(`https://dummyjson.com/products?limit=30&skip=${skip}`)
+        axiosInstance.get(`/products?limit=30&skip=${skip}`)
         .then((response) => {
           setProducts(response.data.products); 
           setTotalProducts(response.data.total);})
         .catch((error) =>console.log(error));
     },[skip]);
-    console.log(products[0]);
     const totalPages = Math.ceil(totalProducts / 30);
     return(
         <>

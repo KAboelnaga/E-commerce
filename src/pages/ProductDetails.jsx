@@ -1,10 +1,9 @@
-import axios from "axios";
 import { useParams, useNavigate } from "react-router"
 import {    useEffect, useState } from "react";
 import { Tooltip, OverlayTrigger, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addedToCart} from "../compenents/store/slices/cart";
-
+import axiosInstance from "../apis/config";
 export default function ProductDetails(){
     const params = useParams();
     const navigate = useNavigate();
@@ -14,7 +13,7 @@ export default function ProductDetails(){
     console.log(params);
     
     useEffect(() => {
-        axios.get(`https://dummyjson.com/products/${params.id}`)
+        axiosInstance.get(`/products/${params.id}`)
         .then((response) => {
             setProduct(response.data);
         })
